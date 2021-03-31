@@ -82,5 +82,49 @@ knn.fit(X=data_train, y=target_train)
 
 predicted = knn.predict(X=data_test)
 expected = target_test
-print(predicted[:20])
-print(expected[:20])
+"""print(predicted[:20])
+print(expected[:20])"""
+
+
+wrong = [(p, e) for (p, e) in zip(predicted, expected) if p != e]
+
+# print(wrong)
+
+# print(format(knn.score(data_test, target_test), ".2%"))
+
+
+# Confusion matrix: allows us to look at numbers in a matrix form and shows diff class and where #predictions were right or wrong
+
+from sklearn.metrics import confusion_matrix
+
+confusion = confusion_matrix(y_true=expected, y_pred=predicted)
+
+# print(confusion)
+
+# Principal diagonal shows correct guess
+"""EX: 
+[[45  0  0  0  0  0  0  0  0  0] >> 45 zeroes; all correct
+ [ 0 45  0  0  0  0  0  0  0  0]
+ [ 0  0 54  0  0  0  0  0  0  0]
+ [ 0  0  0 42  0  1  0  1  0  0] >> 42 correct 3s; mistook one  3 as a 5 and one  3 as a 7!
+ [ 0  0  0  0 49  0  0  1  0  0]
+ [ 0  0  0  0  0 38  0  0  0  0]
+ [ 0  0  0  0  0  0 42  0  0  0]
+ [ 0  0  0  0  0  0  0 45  0  0]
+ [ 0  1  1  2  0  0  0  0 39  1] >> 8 had issues!
+ [ 0  0  0  0  1  0  0  0  1 41]] """
+
+# Using a heat map--dta frame as an import to create the map
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt2
+
+confusion_df = pd.DataFrame(confusion, index=range(10), columns=range(10))
+
+figure = plt2.figure()
+
+axes = sns.heatmap(confusion_df, annot=True, cmap=plt2.cm.nipy_spectral_r)
+
+plt2.show()
+print("done")
