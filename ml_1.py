@@ -37,7 +37,7 @@ print(digits.target.shape)  # This is the answer!
 
 # What is the target data one dimensional? The data has 64 features, but the target just has the answer!
 
-# In order to fee dthe model a correct dimension, we have to fee dit the right array
+# In order to feed the model a correct dimension, we have to fee dit the right array
 
 # Let's look at the data we have!
 import matplotlib.pyplot as plt
