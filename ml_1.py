@@ -23,7 +23,7 @@ digits = load_digits()
 # Data set, load the data, and explore (visualize) the data
 ##You might need to transform the data!
 
-##Ten possible classes; tryign to get the program to recognize which class the number belongs in
+##Ten possible classes; trying to get the program to recognize which class the number belongs in
 
 # print(digits.DESCR)
 
