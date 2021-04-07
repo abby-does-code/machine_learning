@@ -34,6 +34,7 @@ print(california.df.describe())  # Stats on the data; average, standard deviatio
 import matplotlib.pyplot as pyplot
 import seaborn as sns
 
+
 sns.set_style("whitegrid")
 
 for feature in california.feature_names:
@@ -54,3 +55,54 @@ print(X_test.shape)
 print(X_train.shape)
 print(y_train.shape)
 print(y_test.shape)
+
+from sklearn.linear_model import LinearRegression
+
+linear_regression = LinearRegression()
+
+linear_regression.fit(X=x_train, y=y_train)
+
+# Using the enumerate method next!
+##If the data contains categorical data, you'll have to do some pre-processing
+
+# Enumerate allows you to get a counter and the value from the iterable at the same time!
+
+for i, name in enumerate(california.feature_names):
+    print(f"{name}:{linear_regression.coef_[i]}")
+
+predicted = linear_regression.predict(x_test)
+print(predicted[:5])
+
+expected = y_test
+print(expected[:5])
+
+# CREATE A DF CONTAINING CLUMNS FOR THE EXPECTED VS PREDICTED VALUES:
+
+df = pd.DataFrame()
+
+df["Expected"] = pd.Series(expected)
+
+df["Predicted"] = pd.SEries(predicted)
+
+print(df[:10])
+# Output should be two columns with expected and predicted
+
+# Time to plot!
+
+import matplotlib.pyplot as plt2
+
+figure = plt2.figure(figsize=(9, 9))
+
+axes = sns.scatterplot(
+    data=df, x="Expected", y="Predicted", palette="cool", legend=False
+)
+
+# Set the x and y axes to use the same scale along both axes
+
+start = min(expected.min(), predicted.min())
+print(start)  # Giving us two values here; same scale for both axes
+
+axes.setxlim(start, end)
+axes.set_ylim(start, end)
+
+line = plt2.plot([start, end], [start, end], "k--")
