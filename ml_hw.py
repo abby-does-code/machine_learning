@@ -25,7 +25,9 @@ california_df = pd.DataFrame(california.data, columns=california.feature_nems)
 
 print(california_df.describe())
 
-"""
+## Created a data frame because it looks like that's what the graph is built off of below
+
+
 sns.set(font_scale=1.1)
 sns.set_style('whitegrid')
 
@@ -34,5 +36,7 @@ sns.set_style('whitegrid')
 
 #Code below uses pairplot to create a grid of graphs plotting each feature against each itself and the other specified features
 
-grid = sns.pairplot(data=california_df, vars =california_df.columns[0:4], hue = '
-"""
+grid = sns.pairplot(data=california_df, vars =california_df.columns[0:4], hue = 'MedHouseValue'
+
+'''OR 
+grid = sns.pairplot(data=california_df, vars=california_df.columns[0:4])

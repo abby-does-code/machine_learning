@@ -40,7 +40,7 @@ sns.set_style("whitegrid")
 for feature in california.feature_names:
     plt.figure(figsize=(8, 4.5))
     sns.scatterplot(
-        data=sample_df, x=feature, y="MedHouseVAlue", palette="cool", legend=False
+        data=sample_df, x=feature, y="MedHouseValue", palette="cool", legend=False
     )
 
 plt.show()
