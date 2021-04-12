@@ -5,6 +5,7 @@
 
 # Start#
 from sklearn.datasets import fetch_california_housing
+import matplotlib.pyplot as plt
 
 import seaborn as sns
 
@@ -101,4 +102,28 @@ axes = sns.scatterplot(
     data=nyc, x="Date", y="Temperature", palette="winter", legend=False
 )
 
+# data specifies where to pull the data
+# hue specifies how colors are determined
+# palette is Matplotlib color map
+# legend specifies thatthe scatterplot shouldn't show one
 
+# Scaling the range of values for better visualization
+
+axes.set_ylim(10, 70)
+
+# To create regression line, create array containing min and max date values from nyc.Date
+##THESE MARK THE REGR LINE'S START AND END POINTS; VRY IMPORTANT!
+import numpy as np
+
+x = np.array([min(nyc.Date.values), max(nyc.Date.values)])
+
+# Below, we pass the array to the predict lambda and produce another array with the corresponding values
+# Corresponding values = y values
+
+y = predict(x)
+
+# Use Matplotlib to plot the line based on these two arrays
+
+line = plt.plot(x, y)
+
+plt.show()
