@@ -95,3 +95,10 @@ print(predict(2019))
 print(predict(1890))
 # OUTPUT: 2813
 
+# Seaborn imported above
+
+axes = sns.scatterplot(
+    data=nyc, x="Date", y="Temperature", palette="winter", legend=False
+)
+
+
