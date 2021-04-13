@@ -26,7 +26,7 @@ california_df = pd.DataFrame(california.data, columns=california.feature_names)
 
 # print(california_df.describe())
 
-"""california_df["MedHouseValue"] = pd.Series(california.target)
+california_df["MedHouseValue"] = pd.Series(california.target)
 
 ## Created a data frame because it looks like that's what the graph is built off of below
 
@@ -37,17 +37,15 @@ sns.set_style("whitegrid")
 
 # Code below uses pairplot to create a grid of graphs plotting each feature against each itself and the other specified features
 
-grid = sns.pairplot(
-    data=california_df, vars=california_df.columns[0:4],palette="cool", hue="MedHouseValue", legend = False
-)
 
-OR
-grid = sns.pairplot(data=california_df, vars=california_df.columns[0:4])"""
+grid = sns.pairplot(data=california_df, vars=california_df.columns[0:3])
+
+plt.show()
 
 
 """2. Re-implement the simple linear regression case study of Section 15.4 using the average yearly temperature data. How does the temperature trend compare to the average January high temperatures?"""
 
-nyc = pd.read_csv("ave_hi_nyc_jan_1895-2018.csv")
+nyc = pd.read_csv("ave_yearly_temp_nyc_1895-2017.csv")
 
 nyc.columns = ["Date", "Temperature", "Anomaly"]
 
