@@ -18,6 +18,8 @@ animal_class = pd.read_csv("animal_classes.csv")
 
 animals_training = pd.read_csv("animals_train.csv")
 
+print(animals_training.
+
 
 print(animal_class.head(3))
 
