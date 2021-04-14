@@ -17,8 +17,6 @@ import matplotlib.pyplot as pyplot
 
 animal_class = pd.read_csv("animal_classes.csv")
 
-print(animal_class.head(3))
-
 
 animals_training = pd.read_csv("animals_train.csv")
 names = [
@@ -39,8 +37,8 @@ names = [
     "catsize",
     "class_number",
 ]
-training_data = pd.read_csv("animals_train.csv", names=names)
 
+training_data = pd.read_csv("animals_train.csv")
 
 from sklearn.model_selection import train_test_split
 
@@ -48,7 +46,6 @@ data_train, data_test, target_train, target_test = train_test_split(
     training_data.data, training_data.target, random_state=11
 )
 
-print()
 
 from sklearn.neighbors import KNeighborsClassifier
 
