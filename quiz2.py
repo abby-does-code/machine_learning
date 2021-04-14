@@ -17,10 +17,8 @@ import matplotlib.pyplot as pyplot
 
 animal_class = pd.read_csv("animal_classes.csv")
 
+X = pd.read_csv("animals_train.csv")
 
-animals_training = pd.read_csv("animals_train.csv", header=0)
-
-X = pd.DataFrame(animals_training.data)
 X.columns = [
     "hair",
     "feathers",
@@ -41,19 +39,19 @@ X.columns = [
     "class_number",
 ]
 
-y = [X.columns[16]]
+y = pd.read_csv("animals_test.csv", header=0)
 
 
-from sklearn.model_selection import train_test_split
+"""from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(
     animals_training.data, animals.training.target_names, random_state=11
-)
+)"""
 
 from sklearn.neighbors import KNeighborsClassifier
 
 knn = KNeighborsClassifier()
-knn.fit(X=data_train, y=target_train)
+knn.fit(X, y)
 
 predicted = knn.predict(X=data_test)
 predicted = [animal_class.target_names[i] for i in predicted]
