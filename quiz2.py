@@ -14,21 +14,41 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as pyplot
 
+
 animal_class = pd.read_csv("animal_classes.csv")
 
-animals_training = pd.read_csv("animals_train.csv")
-
-print(animals_training.
-
-
 print(animal_class.head(3))
+
+
+animals_training = pd.read_csv("animals_train.csv")
+names = [
+    "hair",
+    "feathers",
+    "eggs",
+    "milk",
+    "airborne",
+    "aquatic",
+    "predator",
+    "toothed",
+    "breathes",
+    "venomous",
+    "fins",
+    "legs",
+    "tail",
+    "domestic",
+    "catsize",
+    "class_number",
+]
+training_data = pd.read_csv("animals_train.csv", names=names)
+
 
 from sklearn.model_selection import train_test_split
 
 data_train, data_test, target_train, target_test = train_test_split(
-    animals_training.data, animals_training.target, random_state=11
+    training_data.data, training_data.target, random_state=11
 )
-# AttributeError: 'DataFrame' object has no attribute 'data'
+
+print()
 
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -40,3 +60,5 @@ predicted = [animal_class.target_names[i] for i in predicted]
 
 expected = target_test
 expected = [animal_class.target_names[i] for i in expected]
+
+print(predicted[:10])
