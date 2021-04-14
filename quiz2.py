@@ -56,4 +56,25 @@ print(predicted[:10])
 
 # predicted = [animal_class.target_names[i] for i in predicted]
 
-class_number = animal_class["class_number"]
+class_number = animal_class["Class_Number"]
+
+animal_name = test["animal_name"]
+
+class_names = animal_class["Class_Type"]
+
+print(class_names[:10])
+
+# predicted = [class_number[i] for i in predicted]
+# print(predicted)
+name_num_dict = {
+    "1": "Mammal",
+    "2": "Bird",
+    "3": "Reptile",
+    "4": "Fish",
+    "5": "Amphibian",
+    "6": "Bug",
+    "7": "Invertebrate",
+}
+
+for i in predicted:
+    predicted[i] = 
