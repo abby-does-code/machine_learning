@@ -11,8 +11,6 @@ animals_test.csv   download - is the file you will use to test your model to see
 Your program should produce a csv file that shows the name of the animal and their corresponding class as shown in this file -predictions.csv  """
 
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as pyplot
 
 
 animal_class = pd.read_csv("animal_classes.csv")
@@ -39,24 +37,23 @@ X.columns = [
     "class_number",
 ]
 
-y = pd.read_csv("animals_test.csv", header=0)
+y = X["class_number"]
+X = X.drop(columns="class_number")
 
-
-"""from sklearn.model_selection import train_test_split
-
-X_train, X_test, y_train, y_test = train_test_split(
-    animals_training.data, animals.training.target_names, random_state=11
-)"""
 
 from sklearn.neighbors import KNeighborsClassifier
 
 knn = KNeighborsClassifier()
 knn.fit(X, y)
 
-predicted = knn.predict(X=data_test)
-predicted = [animal_class.target_names[i] for i in predicted]
 
-expected = target_test
-expected = [animal_class.target_names[i] for i in expected]
+test = pd.read_csv("animals_test.csv")
+test_data = test.drop(columns="animal_name")  # feed everything except the target
+
+predicted = knn.predict(X=test_data)
 
 print(predicted[:10])
+
+# predicted = [animal_class.target_names[i] for i in predicted]
+
+class_number = animal_class["class_number"]
