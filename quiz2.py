@@ -67,14 +67,14 @@ print(class_names[:10])
 # predicted = [class_number[i] for i in predicted]
 # print(predicted)
 name_num_dict = {
-    "1": "Mammal",
-    "2": "Bird",
-    "3": "Reptile",
-    "4": "Fish",
-    "5": "Amphibian",
-    "6": "Bug",
-    "7": "Invertebrate",
+    1: "Mammal",
+    2: "Bird",
+    3: "Reptile",
+    4: "Fish",
+    5: "Amphibian",
+    6: "Bug",
+    7: "Invertebrate",
 }
 
 for i in predicted:
-    predicted[i] = 
+    predicted = [name_num_dict.keys(x) for i in predicted if predicted[i] in name_num_dict]
