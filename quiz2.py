@@ -11,6 +11,7 @@ animals_test.csv   download - is the file you will use to test your model to see
 Your program should produce a csv file that shows the name of the animal and their corresponding class as shown in this file -predictions.csv  """
 
 import pandas as pd
+import csv
 
 
 animal_class = pd.read_csv("animal_classes.csv")
@@ -58,7 +59,7 @@ print(predicted[:10])
 
 class_number = animal_class["Class_Number"]
 
-animal_name = test["animal_name"]
+animal_name = test["animal_name"].to_list()
 
 class_names = animal_class["Class_Type"]
 
@@ -76,5 +77,16 @@ name_num_dict = {
     7: "Invertebrate",
 }
 
-for i in predicted:
-    predicted = [name_num_dict.keys(x) for i in predicted if predicted[i] in name_num_dict]
+
+predicted = [name_num_dict[x] for x in predicted]
+print(predicted[:10])
+
+"""match the animal name in test data to an animal name in the list in animal_classes based on the class number"""
+
+
+i = 0
+with open("model_predictions_file.csv", "w") as model_file:
+    for p in predicted:
+        line = animal_name[i] + "," + p + "\n"
+        i += 1
+        model_file.write(line)
